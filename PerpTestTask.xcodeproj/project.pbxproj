@@ -12,6 +12,8 @@
 		4B8F69D621F09A660074BFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8F69D421F09A660074BFD1 /* LaunchScreen.storyboard */; };
 		4B8F69E921F09E180074BFD1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69E721F09E180074BFD1 /* MainViewController.swift */; };
 		4B8F69EA21F09E180074BFD1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8F69E821F09E180074BFD1 /* MainViewController.xib */; };
+		4B8F69EC21F09E950074BFD1 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69EB21F09E950074BFD1 /* DownloadService.swift */; };
+		4B8F69EE21F09FF30074BFD1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69ED21F09FF30074BFD1 /* Result.swift */; };
 		E18819FAA75308E79C0410D8 /* Pods_PerpTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3079AEF59D247C335A8A8F19 /* Pods_PerpTestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		4B8F69DF21F09CB40074BFD1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B8F69E721F09E180074BFD1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4B8F69E821F09E180074BFD1 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		4B8F69EB21F09E950074BFD1 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
+		4B8F69ED21F09FF30074BFD1 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		4B8F69E421F09CF70074BFD1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4B8F69ED21F09FF30074BFD1 /* Result.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 		4B8F69E521F09CFD0074BFD1 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4B8F69EB21F09E950074BFD1 /* DownloadService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -278,6 +284,8 @@
 			files = (
 				4B8F69CC21F09A630074BFD1 /* AppDelegate.swift in Sources */,
 				4B8F69E921F09E180074BFD1 /* MainViewController.swift in Sources */,
+				4B8F69EE21F09FF30074BFD1 /* Result.swift in Sources */,
+				4B8F69EC21F09E950074BFD1 /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
