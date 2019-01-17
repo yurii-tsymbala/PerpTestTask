@@ -10,6 +10,8 @@
 		4B8F69CC21F09A630074BFD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69CB21F09A630074BFD1 /* AppDelegate.swift */; };
 		4B8F69D321F09A660074BFD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B8F69D221F09A660074BFD1 /* Assets.xcassets */; };
 		4B8F69D621F09A660074BFD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B8F69D421F09A660074BFD1 /* LaunchScreen.storyboard */; };
+		4B8F69E921F09E180074BFD1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69E721F09E180074BFD1 /* MainViewController.swift */; };
+		4B8F69EA21F09E180074BFD1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8F69E821F09E180074BFD1 /* MainViewController.xib */; };
 		E18819FAA75308E79C0410D8 /* Pods_PerpTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3079AEF59D247C335A8A8F19 /* Pods_PerpTestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +24,8 @@
 		4B8F69D221F09A660074BFD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B8F69D521F09A660074BFD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B8F69DF21F09CB40074BFD1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4B8F69E721F09E180074BFD1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		4B8F69E821F09E180074BFD1 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,7 @@
 		4B8F69E121F09CDB0074BFD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B8F69E621F09E0B0074BFD1 /* Main */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,6 +133,15 @@
 			children = (
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		4B8F69E621F09E0B0074BFD1 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4B8F69E721F09E180074BFD1 /* MainViewController.swift */,
+				4B8F69E821F09E180074BFD1 /* MainViewController.xib */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		9BE49341989F3702AF10428C /* Frameworks */ = {
@@ -199,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B8F69D621F09A660074BFD1 /* LaunchScreen.storyboard in Resources */,
+				4B8F69EA21F09E180074BFD1 /* MainViewController.xib in Resources */,
 				4B8F69D321F09A660074BFD1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B8F69CC21F09A630074BFD1 /* AppDelegate.swift in Sources */,
+				4B8F69E921F09E180074BFD1 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +419,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y8CF7ZMY8K;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Application/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -410,7 +427,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yurafloka.PerpTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -422,6 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y8CF7ZMY8K;
 				INFOPLIST_FILE = "$(SRCROOT)/Source/Application/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,7 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yurafloka.PerpTestTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
