@@ -10,7 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    override func viewDidLoad() {
+  @IBOutlet weak private var yearPickerView: UIPickerView!
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
 
     }
