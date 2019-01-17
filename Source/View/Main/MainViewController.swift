@@ -9,9 +9,12 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Charts
 
 class MainViewController: UIViewController {
   @IBOutlet weak private var yearPickerView: UIPickerView!
+  @IBOutlet weak private var lineChartView: LineChartView!
+
   private var viewModel: MainViewModelType!
   private let disposeBag = DisposeBag()
   private var router: Router!
