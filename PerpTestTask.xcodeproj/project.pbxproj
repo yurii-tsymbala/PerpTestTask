@@ -16,6 +16,7 @@
 		4B8F69EE21F09FF30074BFD1 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69ED21F09FF30074BFD1 /* Result.swift */; };
 		4B8F69F021F0A2360074BFD1 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69EF21F0A2360074BFD1 /* AlertViewModel.swift */; };
 		4B8F69F321F0A2A40074BFD1 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69F221F0A2A40074BFD1 /* AlertViewController.swift */; };
+		4B8F69F521F0AD040074BFD1 /* UsefulData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8F69F421F0AD040074BFD1 /* UsefulData.swift */; };
 		E18819FAA75308E79C0410D8 /* Pods_PerpTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3079AEF59D247C335A8A8F19 /* Pods_PerpTestTask.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		4B8F69ED21F09FF30074BFD1 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		4B8F69EF21F0A2360074BFD1 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		4B8F69F221F0A2A40074BFD1 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		4B8F69F421F0AD040074BFD1 /* UsefulData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				4B8F69EF21F0A2360074BFD1 /* AlertViewModel.swift */,
+				4B8F69F421F0AD040074BFD1 /* UsefulData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			files = (
 				4B8F69CC21F09A630074BFD1 /* AppDelegate.swift in Sources */,
 				4B8F69F321F0A2A40074BFD1 /* AlertViewController.swift in Sources */,
+				4B8F69F521F0AD040074BFD1 /* UsefulData.swift in Sources */,
 				4B8F69E921F09E180074BFD1 /* MainViewController.swift in Sources */,
 				4B8F69EE21F09FF30074BFD1 /* Result.swift in Sources */,
 				4B8F69F021F0A2360074BFD1 /* AlertViewModel.swift in Sources */,
