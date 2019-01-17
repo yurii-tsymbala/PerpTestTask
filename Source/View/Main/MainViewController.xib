@@ -26,7 +26,7 @@
                     <rect key="frame" x="0.0" y="451" width="375" height="216"/>
                 </pickerView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0T8-4O-RIJ" customClass="LineChartView" customModule="Charts">
-                    <rect key="frame" x="16" y="25" width="343" height="340"/>
+                    <rect key="frame" x="16" y="25" width="343" height="439"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
             </subviews>
@@ -34,7 +34,7 @@
             <constraints>
                 <constraint firstItem="0T8-4O-RIJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="0TB-Kk-tLx"/>
                 <constraint firstItem="0T8-4O-RIJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="49D-iV-jeK"/>
-                <constraint firstItem="c4U-kI-W58" firstAttribute="top" secondItem="0T8-4O-RIJ" secondAttribute="bottom" constant="86" id="D3Q-sb-sjB"/>
+                <constraint firstItem="c4U-kI-W58" firstAttribute="top" secondItem="0T8-4O-RIJ" secondAttribute="bottom" constant="-13" id="D3Q-sb-sjB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0T8-4O-RIJ" secondAttribute="trailing" constant="16" id="JWM-Ym-40k"/>
                 <constraint firstItem="c4U-kI-W58" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JYV-Fp-pOl"/>
                 <constraint firstItem="c4U-kI-W58" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="eVo-Fr-T1P"/>
