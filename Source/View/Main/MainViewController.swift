@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class MainViewController: UIViewController {
-
   @IBOutlet weak private var yearPickerView: UIPickerView!
-  
-  override func viewDidLoad() {
-        super.viewDidLoad()
+  private var viewModel: MainViewModelType!
+  private let disposeBag = DisposeBag()
+  private var router: Router!
 
-    }
+  convenience init(withViewModel viewModel: MainViewModelType,withRouter router: Router) {
+    self.init()
+    self.router = router
+    self.viewModel = viewModel
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    viewModel.fetchData()
+  }
 }
