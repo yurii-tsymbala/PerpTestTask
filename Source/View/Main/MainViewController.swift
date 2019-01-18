@@ -30,11 +30,31 @@ class MainViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    observeViewModel()
     viewModel.fetchData()
+    setupView()
     setupChart()
   }
 
-  private func setupChart() {
+  private func observeViewModel() {
+    viewModel.reloadData
+      .subscribe(onNext: { [weak self] in
+        guard let strongSelf = self else { return }
+        DispatchQueue.main.async {
+          strongSelf.setupPickerView()
+        }
+      }).disposed(by: disposeBag)
+  }
+
+  private func setupView() {
+  }
+
+  private func setupPickerView() {
+    yearPickerView.delegate = self
+    yearPickerView.dataSource = self
+  }
+
+  private func setupChart() {  // refactor to ViewModel
     let data = LineChartData()
 
     var lineChartEntry1 = [ChartDataEntry]()
@@ -82,14 +102,13 @@ extension MainViewController: UIPickerViewDataSource {
   }
 
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    let string = viewModel.pickerViewModel.infoDataArray[row].year
-    return viewModel.pickerViewModel.infoDataArray[row].year
+    return viewModel.pickerViewModel.getInfoOfYear(atIndex: row)
   }
 }
 
 extension MainViewController: UIPickerViewDelegate {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    viewModel.pickerViewModel.sendInfoToLabel(indexOfTheRow: row)
+    //viewModel.pickerViewModel.sendInfoToLabel(indexOfTheRow: row)
   }
 }
 

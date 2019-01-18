@@ -29,7 +29,7 @@ class DownloadService: DownloadServiceType {
   private let monthsInYear = 12
   private var maxTempArrayInfo = [Int]()
   private var minTempArrayInfo = [Int]()
-  private var yearInfo = Int()
+  private var yearInfo = String()
 
   func fetchDataFromFile(completion: @escaping DownloadHandler) {
     let textURL = URL(string: "https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/bradforddata.txt")!
@@ -78,13 +78,12 @@ class DownloadService: DownloadServiceType {
         minTmp = "0"
       }
 
-      guard let yearValue = Int(year) else {completion(Result.failure(DownloadServiceError.fourthError));return}
       guard let maxTempValue = Double(maxTmp) else {completion(Result.failure(DownloadServiceError.fourthError));return}
       guard let minTempValue = Double(minTmp) else {completion(Result.failure(DownloadServiceError.fourthError));return}
 
       maxTempArrayInfo.append(doubleToInteger(data:maxTempValue))
       minTempArrayInfo.append(doubleToInteger(data:minTempValue))
-      yearInfo = yearValue
+      yearInfo = year
 
       if maxTempArrayInfo.count == monthsInYear && minTempArrayInfo.count == monthsInYear {
         infoDataArray.append(InfoData(year: yearInfo, maxTempArray: maxTempArrayInfo, minTempArray:minTempArrayInfo))

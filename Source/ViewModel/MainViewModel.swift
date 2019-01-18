@@ -42,8 +42,7 @@ class MainViewModel: MainViewModelType {
       case .success(let infoDataArray):
         strongSelf.infoDataArray = infoDataArray
         strongSelf.pickerViewModel = PickerViewModel(infoDataArray: infoDataArray)
-
-      //        strongSelf.reloadData.onNext(())
+        strongSelf.reloadData.onNext(())
       case .failure(let error):
         print(error.rawValue)
         strongSelf.showAlert.onNext(AlertViewModel(message: error.rawValue))

@@ -9,7 +9,7 @@
 import Foundation
 
 struct InfoData {
-  let year: Int
+  let year: String
   let maxTempArray :[Int]
   let minTempArray :[Int]
 }

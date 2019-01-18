@@ -12,12 +12,12 @@ import RxCocoa
 
 class PickerViewModel {
 
-    //var currentStickerPackName = BehaviorRelay<StickerPack>(value: .pockemons)
+  //var currentStickerPackName = BehaviorRelay<StickerPack>(value: .pockemons)
 
   var infoDataArray = [InfoData]()
 
   func getInfoOfYear(atIndex index: Int) -> String {
-    return infoDataArray[index].year.
+    return infoDataArray[index].year
   }
 
   var numberOfRowsForPicker: Int {
