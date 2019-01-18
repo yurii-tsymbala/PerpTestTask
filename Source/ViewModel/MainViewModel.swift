@@ -19,7 +19,7 @@ protocol MainViewModelType {
 
 class MainViewModel: MainViewModelType {
   private struct Strings {
-    static let navigatiomItemTitle = NSLocalizedString("Wheather info", comment: "")
+    static let navigatiomItemTitle = NSLocalizedString("Weather info", comment: "")
   }
 
   private let downloadService: DownloadServiceType

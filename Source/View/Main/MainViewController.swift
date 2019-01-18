@@ -35,20 +35,23 @@ class MainViewController: UIViewController {
     viewModel.reloadData
       .subscribe(onNext: { [weak self] in
         guard let strongSelf = self else {return}
+        strongSelf.viewModel.pickerViewModel.currentChartData
+          .subscribe(onNext: { [weak self] currentChartData in
+            guard let strongSelf = self else {return}
+            DispatchQueue.main.async {
+              strongSelf.setupChartView(withMaxTemp: currentChartData.maxTempArray,
+                                        withMinTemp: currentChartData.minTempArray)
+            }
+          }).disposed(by: strongSelf.disposeBag)
         DispatchQueue.main.async {
           strongSelf.setupPickerView()
         }
       }).disposed(by: disposeBag)
-    viewModel.pickerViewModel.currentChartData
-      .subscribe(onNext: { [weak self] currentChartData in
-        guard let strongSelf = self else {return}
-        strongSelf.setupChartView(withMaxTemp: currentChartData.maxTempArray,
-                                  withMinTemp: currentChartData.minTempArray)
-      }).disposed(by: disposeBag)
+
   }
 
   private func setupView() {
-
+    title = viewModel.navigatiomItemTitle
   }
 
   private func setupPickerView() {
