@@ -24,6 +24,7 @@ class MainViewModel: MainViewModelType {
 
   private let downloadService: DownloadServiceType
   private var infoDataArray = [InfoData]()
+  var pickerViewModel: PickerViewModel!
 
   init(downloadService: DownloadServiceType) {
     self.downloadService = downloadService
@@ -40,12 +41,9 @@ class MainViewModel: MainViewModelType {
       switch fetchResult {
       case .success(let infoDataArray):
         strongSelf.infoDataArray = infoDataArray
-        for object in infoDataArray {
-          print(object)
-        }
-//
-//        //strongSelf.usefulDataArray = usefulDataArray
-//        strongSelf.reloadData.onNext(())
+        strongSelf.pickerViewModel = PickerViewModel(infoDataArray: infoDataArray)
+
+      //        strongSelf.reloadData.onNext(())
       case .failure(let error):
         print(error.rawValue)
         strongSelf.showAlert.onNext(AlertViewModel(message: error.rawValue))

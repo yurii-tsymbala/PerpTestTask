@@ -12,27 +12,25 @@ import RxCocoa
 
 class PickerViewModel {
 
-//  var currentStickerPackName = BehaviorRelay<StickerPack>(value: .pockemons)
-//
-//  let stickerPacksArray = [UIImage(named: "Pockemons")!,
-//                           UIImage(named: "Food")!,
-//                           UIImage(named: "Cars")!]
-//
-//  var numberOfRowsForPicker: Int {
-//    return stickerPacksArray.count
-//  }
-//
-//  func sendInfoToLabel(indexOfTheRow row: Int) {
-//    switch row {
-//    case 0:
-//      currentStickerPackName.accept(.pockemons)
-//    case 1:
-//      currentStickerPackName.accept(.food)
-//    case 2:
-//      currentStickerPackName.accept(.cars)
-//    default:
-//      currentStickerPackName.accept(.pockemons)
-//    }
-//  }
+    //var currentStickerPackName = BehaviorRelay<StickerPack>(value: .pockemons)
+
+  var infoDataArray = [InfoData]()
+
+  func getInfoOfYear(atIndex index: Int) -> String {
+    return infoDataArray[index].year.
+  }
+
+  var numberOfRowsForPicker: Int {
+    return infoDataArray.count
+  }
+
+  init(infoDataArray: [InfoData]) {
+    self.infoDataArray = infoDataArray
+  }
+
+
+  func sendInfoToLabel(indexOfTheRow row: Int) {
+
+  }
 }
 

@@ -18,11 +18,11 @@ class MainViewController: UIViewController {
   var minTemp = [-1,-2,-3,-4]
   var maxTemp = [5,10,15,10,20]
 
-  private var viewModel: MainViewModelType!
+  private var viewModel: MainViewModel!
   private let disposeBag = DisposeBag()
   private var router: Router!
 
-  convenience init(withViewModel viewModel: MainViewModelType,withRouter router: Router) {
+  convenience init(withViewModel viewModel: MainViewModel,withRouter router: Router) {
     self.init()
     self.router = router
     self.viewModel = viewModel
@@ -72,21 +72,26 @@ class MainViewController: UIViewController {
   }
 }
 
-//extension MainViewController: UIPickerViewDataSource {
-//  func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//    return 1
-//  }
-//
-////  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-////    return viewModel.pickerViewModel.numberOfRowsForPicker
-////  }
-//}
-//
-//extension MainViewController: UIPickerViewDelegate {
-//  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-////    viewModel.pickerViewModel.sendInfoToLabel(indexOfTheRow: row)
-//  }
-//}
+extension MainViewController: UIPickerViewDataSource {
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return viewModel.pickerViewModel.numberOfRowsForPicker
+  }
+
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    let string = viewModel.pickerViewModel.infoDataArray[row].year
+    return viewModel.pickerViewModel.infoDataArray[row].year
+  }
+}
+
+extension MainViewController: UIPickerViewDelegate {
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    viewModel.pickerViewModel.sendInfoToLabel(indexOfTheRow: row)
+  }
+}
 
 
 
