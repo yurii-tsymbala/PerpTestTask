@@ -6,16 +6,15 @@
 //  Copyright © 2019 Yurii Tsymbala. All rights reserved.
 //
 
-import UIKit
 import RxSwift
 import RxCocoa
 
 class PickerViewModel {
 
-  //var currentStickerPackName = BehaviorRelay<StickerPack>(value: .pockemons)
+  var currentChartData = BehaviorRelay<InfoData>(value: InfoData(year: "1908", maxTempArray: [0], minTempArray: [0]))
 
-  var infoDataArray = [InfoData]()
-
+  private var infoDataArray = [InfoData]()
+  
   func getInfoOfYear(atIndex index: Int) -> String {
     return infoDataArray[index].year
   }
@@ -28,9 +27,8 @@ class PickerViewModel {
     self.infoDataArray = infoDataArray
   }
 
-
-  func sendInfoToLabel(indexOfTheRow row: Int) {
-
+  func sendInfoToChart(indexOfTheRow row: Int) {
+    currentChartData.accept(infoDataArray[row])
   }
 }
 

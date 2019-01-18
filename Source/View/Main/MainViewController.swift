@@ -14,10 +14,6 @@ import Charts
 class MainViewController: UIViewController {
   @IBOutlet weak private var yearPickerView: UIPickerView!
   @IBOutlet weak private var lineChartView: LineChartView!
-
-  var minTemp = [-1,-2,-3,-4]
-  var maxTemp = [5,10,15,10,20]
-
   private var viewModel: MainViewModel!
   private let disposeBag = DisposeBag()
   private var router: Router!
@@ -33,20 +29,26 @@ class MainViewController: UIViewController {
     observeViewModel()
     viewModel.fetchData()
     setupView()
-    setupChart()
   }
 
   private func observeViewModel() {
     viewModel.reloadData
       .subscribe(onNext: { [weak self] in
-        guard let strongSelf = self else { return }
+        guard let strongSelf = self else {return}
         DispatchQueue.main.async {
           strongSelf.setupPickerView()
         }
       }).disposed(by: disposeBag)
+    viewModel.pickerViewModel.currentChartData
+      .subscribe(onNext: { [weak self] currentChartData in
+        guard let strongSelf = self else {return}
+        strongSelf.setupChartView(withMaxTemp: currentChartData.maxTempArray,
+                                  withMinTemp: currentChartData.minTempArray)
+      }).disposed(by: disposeBag)
   }
 
   private func setupView() {
+
   }
 
   private func setupPickerView() {
@@ -54,7 +56,9 @@ class MainViewController: UIViewController {
     yearPickerView.dataSource = self
   }
 
-  private func setupChart() {  // refactor to ViewModel
+  private func setupChartView(withMaxTemp maxTemp: [Int],withMinTemp minTemp: [Int]) {
+    lineChartView.data?.clearValues()
+
     let data = LineChartData()
 
     var lineChartEntry1 = [ChartDataEntry]()
@@ -108,7 +112,7 @@ extension MainViewController: UIPickerViewDataSource {
 
 extension MainViewController: UIPickerViewDelegate {
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    //viewModel.pickerViewModel.sendInfoToLabel(indexOfTheRow: row)
+    viewModel.pickerViewModel.sendInfoToChart(indexOfTheRow: row)
   }
 }
 

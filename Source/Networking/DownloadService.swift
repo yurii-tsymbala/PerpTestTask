@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 enum DownloadServiceError: String {
   case firstError = "Request Error"
   case secondError = "Data Response Error"
