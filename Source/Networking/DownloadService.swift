@@ -18,13 +18,13 @@ enum DownloadServiceError: String {
 }
 
 protocol DownloadServiceType {
-  typealias DownloadHandler = (Result<[UsefulData], DownloadServiceError>) -> Void
+  typealias DownloadHandler = (Result<[InfoData], DownloadServiceError>) -> Void
   func fetchDataFromFile(completion: @escaping DownloadHandler)
 }
 
 class DownloadService: DownloadServiceType {
 
-  private var usefulData = [UsefulData]()
+  private var infoDataArray = [InfoData]()
   private let indexOfLineToStartFetch = 7
 
   func fetchDataFromFile(completion: @escaping DownloadHandler) {
@@ -36,10 +36,15 @@ class DownloadService: DownloadServiceType {
       do {
         let string = try String(contentsOf: dataResponse, encoding: String.Encoding.utf8)
         var fullText = string.components(separatedBy: "\n")
+
+        var maxTempArrayInfo = [Int]()
+        var minTempArrayInfo = [Int]()
+        var yearInfo = Int()
+
         for indexOfLine in strongSelf.indexOfLineToStartFetch..<fullText.count {
           var wordsInLine = fullText[indexOfLine].components(separatedBy: .whitespacesAndNewlines).filter{
             !$0.isEmpty && !$0.contains("Provisional")}
-          var (year,month,maxTmp,minTmp) = (wordsInLine[0],wordsInLine[1],wordsInLine[2],wordsInLine[3])
+          var (year,maxTmp,minTmp) = (wordsInLine[0],wordsInLine[2],wordsInLine[3])
           if maxTmp.contains("*") || minTmp.contains("*") {
             maxTmp.removeLast()
             minTmp.removeLast()
@@ -49,22 +54,31 @@ class DownloadService: DownloadServiceType {
             minTmp = "0"
           }
           guard let yearValue = Int(year) else {completion(Result.failure(DownloadServiceError.fourthError));return}
-          guard let monthValue = Int(month) else {completion(Result.failure(DownloadServiceError.fourthError));return}
           guard let maxTempValue = Double(maxTmp) else {completion(Result.failure(DownloadServiceError.fourthError));return}
           guard let minTempValue = Double(minTmp) else {completion(Result.failure(DownloadServiceError.fourthError));return}
-          strongSelf.usefulData.append(UsefulData(year: yearValue,
-                                                  month: monthValue,
-                                                  maxTemp: strongSelf.doubleToInteger(data:maxTempValue),
-                                                  minTemp: strongSelf.doubleToInteger(data:minTempValue)))
+
+          maxTempArrayInfo.append(strongSelf.doubleToInteger(data:maxTempValue))
+          minTempArrayInfo.append(strongSelf.doubleToInteger(data:minTempValue))
+          yearInfo = yearValue
+
+          if maxTempArrayInfo.count == 12 && minTempArrayInfo.count == 12 {
+            strongSelf.infoDataArray.append(InfoData(year: yearInfo , maxTempArray: maxTempArrayInfo , minTempArray:minTempArrayInfo))
+            maxTempArrayInfo.removeAll()
+            minTempArrayInfo.removeAll()
+          }
         }
-        completion(Result.success(strongSelf.usefulData))
+        completion(Result.success(strongSelf.infoDataArray))
       } catch _ {
         completion(Result.failure(DownloadServiceError.thirdError))
       }
       }.resume()
   }
 
-  private func doubleToInteger(data:Double)-> Int {
+  private func filterData() -> [InfoData] {
+
+  }
+
+  private func doubleToInteger(data:Double) -> Int {
     let doubleToString = "\(data)"
     let stringToInteger = (doubleToString as NSString).integerValue
     return stringToInteger

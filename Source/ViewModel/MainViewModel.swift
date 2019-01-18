@@ -23,7 +23,7 @@ class MainViewModel: MainViewModelType {
   }
 
   private let downloadService: DownloadServiceType
-  private var usefulDataArray: [UsefulData]!
+  private var infoDataArray = [InfoData]()
 
   init(downloadService: DownloadServiceType) {
     self.downloadService = downloadService
@@ -38,12 +38,14 @@ class MainViewModel: MainViewModelType {
     downloadService.fetchDataFromFile( completion: { [weak self] fetchResult in
       guard let strongSelf = self else {return}
       switch fetchResult {
-      case .success(let usefulDataArray):
-        for usefulObject in usefulDataArray {
-          print(usefulObject)
+      case .success(let infoDataArray):
+        strongSelf.infoDataArray = infoDataArray
+        for object in infoDataArray {
+          print(object)
         }
-        strongSelf.usefulDataArray = usefulDataArray
-        strongSelf.reloadData.onNext(())
+//
+//        //strongSelf.usefulDataArray = usefulDataArray
+//        strongSelf.reloadData.onNext(())
       case .failure(let error):
         print(error.rawValue)
         strongSelf.showAlert.onNext(AlertViewModel(message: error.rawValue))

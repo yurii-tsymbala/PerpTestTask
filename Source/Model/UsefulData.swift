@@ -8,10 +8,9 @@
 
 import Foundation
 
-struct UsefulData {
+struct InfoData {
   let year: Int
-  let month: Int
-  let maxTemp: Int
-  let minTemp: Int
+  let maxTempArray :[Int]
+  let minTempArray :[Int]
 }
 
