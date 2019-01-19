@@ -47,11 +47,19 @@ class MainViewController: UIViewController {
           strongSelf.setupPickerView()
         }
       }).disposed(by: disposeBag)
-
+    viewModel.showAlert
+      .subscribe(onNext: { [weak self] alertViewModel in
+        guard let strongSelf = self else { return }
+        DispatchQueue.main.async {
+          strongSelf.showAlert(withViewModel: alertViewModel)
+        }
+      })
+      .disposed(by: disposeBag)
   }
 
   private func setupView() {
     title = viewModel.navigatiomItemTitle
+
   }
 
   private func setupPickerView() {
@@ -96,6 +104,10 @@ class MainViewController: UIViewController {
     data.addDataSet(line1)
 
     lineChartView.data = data
+  }
+
+  private func showAlert(withViewModel viewModel: AlertViewModel ) {
+    router.showAlert(viewModel, inViewController: self)
   }
 }
 

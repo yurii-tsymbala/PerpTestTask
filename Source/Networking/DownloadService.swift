@@ -36,7 +36,7 @@ class DownloadService: DownloadServiceType {
 
       guard let strongSelf = self else {return}
       guard error == nil else {completion(Result.failure(DownloadServiceError.firstError));return}
-      guard let dataResponse = dataResponse else { completion(Result.failure(DownloadServiceError.secondError));return}
+      guard let dataResponse = dataResponse else {completion(Result.failure(DownloadServiceError.secondError));return}
 
       do {
         let string = try String(contentsOf: dataResponse, encoding: String.Encoding.utf8)
