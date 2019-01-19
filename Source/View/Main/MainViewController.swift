@@ -59,7 +59,6 @@ class MainViewController: UIViewController {
 
   private func setupView() {
     title = viewModel.navigatiomItemTitle
-
   }
 
   private func setupPickerView() {

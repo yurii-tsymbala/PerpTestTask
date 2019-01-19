@@ -19,21 +19,20 @@ protocol MainViewModelType {
 
 class MainViewModel: MainViewModelType {
   private struct Strings {
-    static let navigatiomItemTitle = NSLocalizedString("Weather info", comment: "")
+    static let navigatiomItemTitle = NSLocalizedString("Weather Info", comment: "")
   }
 
   private let downloadService: DownloadServiceType
   private var infoDataArray = [InfoData]()
+
   var pickerViewModel: PickerViewModel!
+  var navigatiomItemTitle = Strings.navigatiomItemTitle
+  var reloadData = PublishSubject<Void>()
+  var showAlert = PublishSubject<AlertViewModel>()
 
   init(downloadService: DownloadServiceType) {
     self.downloadService = downloadService
   }
-
-  var navigatiomItemTitle = Strings.navigatiomItemTitle
-
-  var reloadData = PublishSubject<Void>()
-  var showAlert = PublishSubject<AlertViewModel>()
 
   func fetchData() {
     downloadService.fetchDataFromFile( completion: { [weak self] fetchResult in
